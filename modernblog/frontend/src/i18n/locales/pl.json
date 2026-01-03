@@ -1,0 +1,216 @@
+{
+  "header": {
+    "posts": "Posty",
+    "subscribe": "Subskrybuj",
+    "sponsor": "Wsparcie",
+    "admin": "Admin",
+    "search": "Szukaj",
+    "searchPlaceholder": "Szukaj postów...",
+    "toggleSearch": "Przełącz wyszukiwanie",
+    "toggleTheme": "Przełącz na tryb {{mode}}",
+    "toggleMenu": "Przełącz menu",
+    "language": "Język"
+  },
+  "footer": {
+    "poweredBy": "Napędzane przez",
+    "copyright": "© {{year}} {{author}}. Wszelkie prawa zastrzeżone."
+  },
+  "home": {
+    "heroTitle": "Blog Osobisty",
+    "heroDescription": "Myśli, pomysły i teksty techniczne",
+    "posts": "postów",
+    "views": "wyświetleń",
+    "supportMyWork": "Wesprzyj moją pracę",
+    "latestPosts": "Najnowsze Posty",
+    "viewAllPosts": "Zobacz wszystkie posty →",
+    "about": "O mnie",
+    "welcomeMessage": "Witaj na moim osobistym blogu.",
+    "topics": "Tematy",
+    "supportSection": "Wesprzyj Moją Pracę",
+    "supportDescription": "Jeśli uważasz moje teksty za wartościowe, rozważ wsparcie na GitHub Sponsors.",
+    "becomeASponsor": "Zostań Sponsorem"
+  },
+  "posts": {
+    "title": "Wszystkie Posty",
+    "description": "Przeglądaj wszystkie artykuły, sortowane od najnowszych",
+    "noPostsFound": "Nie znaleziono postów.",
+    "pagination": {
+      "previous": "← Poprzednia",
+      "next": "Następna →",
+      "page": "Strona {{current}} z {{total}}"
+    },
+    "readingTime": "{{minutes}} min czytania"
+  },
+  "post": {
+    "backToPosts": "← Powrót do postów",
+    "views": "wyświetleń",
+    "sponsorCTA": "Jeśli uważasz ten post za pomocny, rozważ wsparcie mojej pracy:",
+    "sponsorButton": "Wesprzyj na GitHub",
+    "notFoundTitle": "Post Nie Znaleziony",
+    "notFoundMessage": "Post, którego szukasz, nie istnieje lub został usunięty."
+  },
+  "comments": {
+    "noComments": "Brak komentarzy. Bądź pierwszy!",
+    "leaveComment": "Zostaw Komentarz",
+    "name": "Imię",
+    "namePlaceholder": "Twoje imię",
+    "email": "Email (opcjonalnie)",
+    "emailPlaceholder": "twoj@email.com",
+    "comment": "Komentarz",
+    "commentPlaceholder": "Napisz swój komentarz tutaj...",
+    "submit": "Wyślij Komentarz",
+    "submitting": "Wysyłanie...",
+    "reply": "Odpowiedz",
+    "cancel": "Anuluj",
+    "delete": "Usuń",
+    "error": "Nie udało się wysłać komentarza. Spróbuj ponownie.",
+    "titleWithCount": "Komentarze ({{count}})",
+    "validationError": "Imię i komentarz są wymagane",
+    "commentAdded": "Komentarz został dodany pomyślnie!",
+    "awaitingApproval": "Komentarz oczekuje na zatwierdzenie przez moderatora",
+    "confirmDeleteTitle": "Usuń Komentarz",
+    "confirmDelete": "Czy na pewno chcesz usunąć ten komentarz i wszystkie odpowiedzi?",
+    "deleteError": "Nie udało się usunąć komentarza"
+  },
+  "subscribe": {
+    "title": "Subskrybuj Newsletter",
+    "description": "Otrzymuj powiadomienia o nowych postach bezpośrednio na swoją skrzynkę.",
+    "emailPlaceholder": "Wprowadź swój adres email",
+    "button": "Subskrybuj",
+    "subscribing": "Subskrybowanie...",
+    "success": "Pomyślnie zasubskrybowano! Sprawdź swoją skrzynkę.",
+    "error": "Nie udało się zasubskrybować. Spróbuj ponownie.",
+    "close": "Zamknij"
+  },
+  "unsubscribe": {
+    "title": "Wypisano",
+    "success": "Pomyślnie wypisano z naszego newslettera.",
+    "error": "Nie udało się wypisać. Link może być nieprawidłowy lub wygasły.",
+    "backToHome": "← Powrót do strony głównej",
+    "invalidLink": "Nieprawidłowy link wypisania. Brak tokena.",
+    "genericError": "Wystąpił błąd. Spróbuj ponownie później.",
+    "processing": "Przetwarzanie...",
+    "confirmQuestion": "Czy na pewno chcesz się wypisać?",
+    "confirmButton": "Tak, wypisz mnie",
+    "cancelButton": "Anuluj"
+  },
+  "search": {
+    "title": "Wyniki Wyszukiwania",
+    "resultsFor": "Wyniki dla \"{{query}}\"",
+    "noResults": "Nie znaleziono postów dla \"{{query}}\"",
+    "noQuery": "Wprowadź zapytanie, aby znaleźć posty.",
+    "count": "Znaleziono {{count}} wyników",
+    "noResultsHint": "Spróbuj innych słów kluczowych lub przeglądaj wszystkie posty."
+  },
+  "tag": {
+    "postsTagged": "Posty oznaczone jako",
+    "noPosts": "Nie znaleziono postów z tym tagiem.",
+    "count": "Znaleziono {{count}} postów"
+  },
+  "admin": {
+    "dashboardTitle": "Panel Administratora",
+    "dashboardSubtitle": "Zarządzaj swoimi postami",
+    "login": {
+      "title": "Logowanie Administratora",
+      "tokenPlaceholder": "Wprowadź token administratora",
+      "button": "Zaloguj",
+      "description": "Wprowadź token administratora, aby uzyskać dostęp.",
+      "tokenLabel": "Token Administratora"
+    },
+    "tabs": {
+      "posts": "Posty",
+      "subscribers": "Subskrybenci",
+      "comments": "Komentarze"
+    },
+    "comments": {
+      "filterAll": "Wszystkie",
+      "filterPending": "Oczekujące",
+      "filterApproved": "Zatwierdzone",
+      "author": "Autor",
+      "content": "Treść",
+      "date": "Data",
+      "status": "Status",
+      "actions": "Akcje",
+      "noComments": "Nie znaleziono komentarzy.",
+      "ip": "IP",
+      "approved": "Zatwierdzony",
+      "pending": "Oczekujący",
+      "approve": "Zatwierdź",
+      "reject": "Odrzuć",
+      "delete": "Usuń",
+      "approvedSuccess": "Komentarz zatwierdzony pomyślnie",
+      "rejectedSuccess": "Komentarz odrzucony pomyślnie",
+      "deletedSuccess": "Komentarz usunięty pomyślnie",
+      "confirmDeleteTitle": "Usuń Komentarz",
+      "confirmDeleteMessage": "Czy na pewno chcesz usunąć ten komentarz? Tej operacji nie można cofnąć."
+    },
+    "posts": {
+      "new": "Nowy Post",
+      "edit": "Edytuj",
+      "delete": "Usuń",
+      "published": "Opublikowany",
+      "draft": "Szkic",
+      "noPosts": "Brak postów.",
+      "confirmDeleteTitle": "Usuń Post",
+      "confirmDeleteMessage": "Czy na pewno chcesz usunąć \"{{title}}\"?",
+      "deleteError": "Nie udało się usunąć posta"
+    },
+    "editor": {
+      "title": "Tytuł",
+      "titlePlaceholder": "Wprowadź tytuł posta",
+      "excerpt": "Opis",
+      "excerptPlaceholder": "Krótki opis posta",
+      "content": "Treść",
+      "contentPlaceholder": "Napisz treść posta w Markdown...",
+      "coverImage": "URL Obrazka Okładki",
+      "coverImagePlaceholder": "https://example.com/image.jpg",
+      "tags": "Tagi",
+      "tagsPlaceholder": "Wprowadź tagi oddzielone przecinkami",
+      "isPublished": "Opublikowany",
+      "isFeatured": "Wyróżniony",
+      "notifySubscribers": "Powiadom subskrybentów",
+      "save": "Zapisz",
+      "saving": "Zapisywanie...",
+      "preview": "Podgląd",
+      "uploading": "Wysyłanie...",
+      "uploadImage": "📷 Wyślij Obraz",
+      "uploadError": "Nie udało się wysłać obrazu",
+      "validationError": "Tytuł i treść są wymagane"
+    },
+    "table": {
+      "title": "Tytuł",
+      "status": "Status",
+      "views": "Wyświetlenia",
+      "date": "Data",
+      "actions": "Akcje"
+    },
+    "subscribers": {
+      "noSubscribers": "Brak subskrybentów.",
+      "activeSubscribers": "Aktywni Subskrybenci",
+      "sendNewsletter": "Wyślij Newsletter",
+      "selectPostsDescription": "Wybierz posty do newslettera i wyślij do {{count}} subskrybentów.",
+      "selectPosts": "Wybierz posty do dołączenia",
+      "subject": "Temat",
+      "subjectPlaceholder": "Temat newslettera",
+      "customMessage": "Własna Wiadomość (opcjonalnie)",
+      "customMessagePlaceholder": "Dodaj osobistą wiadomość...",
+      "newsletterSent": "Newsletter wysłany do {{count}} subskrybentów!",
+      "newsletterError": "Nie udało się wysłać newslettera",
+      "confirmSendTitle": "Wyślij Newsletter",
+      "confirmSendMessage": "Wysłać newsletter do {{count}} subskrybentów?",
+      "send": "Wyślij"
+    },
+    "logout": "Wyloguj"
+  },
+  "common": {
+    "loading": "Ładowanie...",
+    "cancel": "Anuluj",
+    "confirm": "Potwierdź",
+    "edit": "Edytuj",
+    "close": "Zamknij",
+    "back": "Wstecz"
+  },
+  "notFound": {
+    "backToHome": "← Powrót do strony głównej"
+  }
+}

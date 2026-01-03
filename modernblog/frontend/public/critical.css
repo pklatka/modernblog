@@ -1,0 +1,17 @@
+/* Critical styles to prevent flash before main CSS loads */
+/* Color variables are loaded from /api/theme.css */
+
+html,
+body {
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+}
+
+/* Hide content until React has mounted and laid out components */
+#root {
+  opacity: 0;
+}
+
+#root.ready {
+  opacity: 1;
+}
