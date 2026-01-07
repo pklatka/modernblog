@@ -47,6 +47,7 @@ export interface BlogInfo {
   author_name: string;
   author_bio: string;
   github_sponsor_url: string;
+  site_url: string;
   total_posts: number;
   total_views: number;
   subscription_enabled: boolean;

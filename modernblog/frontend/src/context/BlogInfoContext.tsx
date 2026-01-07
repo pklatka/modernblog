@@ -20,6 +20,7 @@ const defaultBlogInfo: BlogInfo = {
   author_name: '',
   author_bio: '',
   github_sponsor_url: '',
+  site_url: '',
   total_posts: 0,
   total_views: 0,
   subscription_enabled: false,

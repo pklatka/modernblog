@@ -100,12 +100,14 @@
     "noResults": "No posts found for \"{{query}}\"",
     "noQuery": "Enter a search query to find posts.",
     "count": "{{count}} result(s) found",
-    "noResultsHint": "Try different keywords or browse all posts."
+    "noResultsHint": "Try different keywords or browse all posts.",
+    "pageDescription": "Search through our blog posts to find the content you're looking for."
   },
   "tag": {
     "postsTagged": "Posts tagged with",
     "noPosts": "No posts found with this tag.",
-    "count": "{{count}} post(s) found"
+    "count": "{{count}} post(s) found",
+    "description": "Browse all posts tagged with {{tag}}. {{count}} posts available."
   },
   "admin": {
     "dashboardTitle": "Admin Dashboard",

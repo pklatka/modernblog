@@ -7,8 +7,9 @@ import { getPost } from '../../api/client';
 import MarkdownRenderer from '../../components/MarkdownRenderer';
 import Comments from '../../components/Comments';
 import Spinner from '../../components/Spinner';
+import SEO from '../../components/SEO';
 import { useBlogInfo } from '../../context/BlogInfoContext';
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 import { useEntranceAnimation } from '../../hooks/useEntranceAnimation';
 import './PostPage.css';
 import { HeartIcon } from '../../components/Icons';
@@ -41,12 +42,11 @@ function PostPage() {
     }
   }, [isLoading]);
 
-  // Set title effect
-  useEffect(() => {
-    if (post?.title) {
-      document.title = `${post.title} | Blog`;
-    }
-  }, [post?.title]);
+  // Calculate word count for structured data
+  const wordCount = useMemo(() => {
+    if (!post?.content) return 0;
+    return post.content.split(/\s+/).length;
+  }, [post?.content]);
 
   if (isLoading) {
     return (
@@ -74,6 +74,20 @@ function PostPage() {
 
   return (
     <article className="post-page">
+      <SEO
+        title={post.title}
+        description={post.excerpt || post.content.substring(0, 160)}
+        image={post.cover_image || undefined}
+        url={`/post/${post.slug}`}
+        type="article"
+        publishedTime={post.published_at || post.created_at}
+        modifiedTime={post.updated_at}
+        author={blogInfo?.author_name}
+        tags={post.tags.map((tag) => tag.name)}
+        articleBody={post.content}
+        wordCount={wordCount}
+        readingTime={post.reading_time}
+      />
       <div className="container">
         {/* Post Header */}
         <motion.header

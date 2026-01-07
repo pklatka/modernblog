@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from '@tanstack/react-router';
 import { useEffect } from 'react';
 import { motion } from 'framer-motion';
+import SEO from '../components/SEO';
 import './$.css';
 
 export const Route = createFileRoute('/$')({
@@ -14,6 +15,10 @@ function NotFoundPage() {
 
   return (
     <div className="not-found-page">
+      <SEO
+        title="Page Not Found"
+        noindex={true}
+      />
       <div className="container">
         <motion.div
           className="not-found-content"

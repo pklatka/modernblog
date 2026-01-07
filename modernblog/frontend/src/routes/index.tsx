@@ -7,6 +7,7 @@ import { useEntranceAnimation } from '../hooks/useEntranceAnimation';
 import { getPosts, getFeaturedPosts, getTags, getBlogInfo } from '../api/client';
 import PostCard from '../components/PostCard';
 import Spinner from '../components/Spinner';
+import SEO from '../components/SEO';
 import './index.css';
 import { HeartIcon } from '../components/Icons';
 
@@ -56,6 +57,12 @@ function HomePage() {
 
   return (
     <div className="home-page">
+      <SEO
+        description={blogInfo?.description}
+        type="website"
+        url="/"
+      />
+
       {/* Hero Section */}
       <section className="hero">
         <div className="container">

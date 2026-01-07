@@ -100,12 +100,14 @@
     "noResults": "Nie znaleziono postów dla \"{{query}}\"",
     "noQuery": "Wprowadź zapytanie, aby znaleźć posty.",
     "count": "Znaleziono {{count}} wyników",
-    "noResultsHint": "Spróbuj innych słów kluczowych lub przeglądaj wszystkie posty."
+    "noResultsHint": "Spróbuj innych słów kluczowych lub przeglądaj wszystkie posty.",
+    "pageDescription": "Przeszukaj nasze posty blogowe, aby znaleźć interesujące treści."
   },
   "tag": {
     "postsTagged": "Posty oznaczone jako",
     "noPosts": "Nie znaleziono postów z tym tagiem.",
-    "count": "Znaleziono {{count}} postów"
+    "count": "Znaleziono {{count}} postów",
+    "description": "Przeglądaj wszystkie posty oznaczone tagiem {{tag}}. Dostępnych {{count}} postów."
   },
   "admin": {
     "dashboardTitle": "Panel Administratora",

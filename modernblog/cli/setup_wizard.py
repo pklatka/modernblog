@@ -62,6 +62,13 @@ def run_setup_wizard(config_dir: Optional[str] = None) -> None:
         "GitHub Sponsors URL (leave empty to disable)", default=""
     )
 
+    # SEO
+    console.print("\n[bold cyan]🔍 SEO Settings[/bold cyan]\n")
+
+    config["site_url"] = Prompt.ask(
+        "Site URL for SEO (e.g., https://myblog.com)", default=""
+    )
+
     # Security
     console.print("\n[bold cyan]🔒 Security[/bold cyan]\n")
 

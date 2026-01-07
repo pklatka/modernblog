@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { API_BASE_URL } from '../../config';
 import './UnsubscribePage.css';
 import { QuestionIcon, CheckIcon, LoadingIcon, ErrorIcon } from '../../components/Icons';
+import SEO from '../../components/SEO';
 
 export const Route = createFileRoute('/unsubscribe/')({
   validateSearch: (search: Record<string, unknown>): { token: string } => {
@@ -57,6 +58,10 @@ function UnsubscribePage() {
 
   return (
     <div className="unsubscribe-page">
+      <SEO
+        title={t('unsubscribe.title')}
+        noindex={true}
+      />
       <div className="container">
         <motion.div
           className="unsubscribe-card"

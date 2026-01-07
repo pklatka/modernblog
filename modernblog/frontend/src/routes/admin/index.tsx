@@ -21,6 +21,7 @@ import {
 import { useToast } from '../../components/Toast';
 import { useConfirm } from '../../components/ConfirmModal';
 import Spinner from '../../components/Spinner';
+import SEO from '../../components/SEO';
 import './AdminPage.css';
 
 export const Route = createFileRoute('/admin/')({
@@ -241,6 +242,10 @@ function AdminPage() {
 
   return (
     <div className="admin-page">
+      <SEO
+        title={t('admin.dashboardTitle')}
+        noindex={true}
+      />
       <div className="container admin-container">
         <motion.header
           className="admin-header"

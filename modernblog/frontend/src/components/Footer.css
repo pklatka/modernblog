@@ -53,6 +53,16 @@
   color: var(--color-text-primary);
 }
 
+.footer-rss {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+
+.footer-rss svg {
+  flex-shrink: 0;
+}
+
 @media (max-width: 768px) {
   .footer-content {
     flex-direction: column;

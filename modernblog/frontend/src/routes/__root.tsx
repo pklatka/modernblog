@@ -9,22 +9,22 @@ import '../components/Layout.css';
 function Layout() {
   const { blogInfo } = useBlogInfo();
 
+  // Set HTML lang attribute based on blog language
   useEffect(() => {
-    if (blogInfo?.title) {
-      document.title = blogInfo.title;
-    }
-    if (blogInfo?.description) {
-      const metaDescription = document.querySelector('meta[name="description"]');
-      if (metaDescription) {
-        metaDescription.setAttribute('content', blogInfo.description);
+    if (blogInfo?.language) {
+      document.documentElement.lang = blogInfo.language;
+      // Also update og:locale
+      const ogLocale = document.querySelector('meta[property="og:locale"]');
+      if (ogLocale) {
+        ogLocale.setAttribute('content', blogInfo.language === 'pl' ? 'pl_PL' : 'en_US');
       }
     }
-  }, [blogInfo?.title, blogInfo?.description]);
+  }, [blogInfo?.language]);
 
   return (
     <div className="layout">
       <Header />
-      <main className="main-content">
+      <main className="main-content" role="main">
         <Outlet />
       </main>
       <Footer />

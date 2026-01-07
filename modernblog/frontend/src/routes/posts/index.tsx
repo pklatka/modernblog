@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { getPosts } from '../../api/client';
 import PostCard from '../../components/PostCard';
 import Spinner from '../../components/Spinner';
+import SEO from '../../components/SEO';
 import './PostsPage.css';
 import { useEntranceAnimation } from '../../hooks/useEntranceAnimation';
 
@@ -45,6 +46,13 @@ function PostsPage() {
   }
   return (
     <div className="posts-page">
+      <SEO
+        title={t('posts.title')}
+        description={t('posts.description')}
+        type="website"
+        url={`/posts${page > 1 ? `?page=${page}` : ''}`}
+        canonical="/posts"
+      />
       <div className="container">
         <motion.header
           className="posts-header"

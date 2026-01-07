@@ -60,6 +60,7 @@ class Settings(BaseSettings):
     AUTHOR_NAME: str = "Anonymous"
     AUTHOR_BIO: str = ""
     GITHUB_SPONSOR_URL: str = ""
+    SITE_URL: str = ""  # Canonical site URL for SEO
 
     # Image settings
     MAX_IMAGE_SIZE: int = 10 * 1024 * 1024  # 10MB
@@ -123,6 +124,7 @@ class Settings(BaseSettings):
             "GITHUB_SPONSOR_URL": cfg.get(
                 "github_sponsor_url", cls.model_fields["GITHUB_SPONSOR_URL"].default
             ),
+            "SITE_URL": cfg.get("site_url", cls.model_fields["SITE_URL"].default),
             "ADMIN_PASSWORD_HASH": cfg.get(
                 "admin_password_hash", cls.model_fields["ADMIN_PASSWORD_HASH"].default
             ),

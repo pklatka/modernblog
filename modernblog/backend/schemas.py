@@ -144,6 +144,7 @@ class BlogInfo(BaseModel):
     author_name: str
     author_bio: str
     github_sponsor_url: str
+    site_url: str = ""
     total_posts: int
     total_views: int
     subscription_enabled: bool = False

@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import { searchPosts } from '../../api/client';
 import PostCard from '../../components/PostCard';
 import Spinner from '../../components/Spinner';
+import SEO from '../../components/SEO';
 import './SearchPage.css';
 
 export const Route = createFileRoute('/search/')({
@@ -43,12 +44,6 @@ function SearchPage() {
     }
   }, [loading]);
 
-  useEffect(() => {
-    if (query) {
-      document.title = `Search: ${query} | Blog`;
-    }
-  }, [query]);
-
   if (loading) {
     return (
       <div className="container">
@@ -59,6 +54,12 @@ function SearchPage() {
 
   return (
     <div className="search-page">
+      <SEO
+        title={query ? t('search.resultsFor', { query }) : t('search.title')}
+        description={t('search.pageDescription')}
+        noindex={true}
+        type="website"
+      />
       <div className="container">
         <motion.header
           className="search-header"

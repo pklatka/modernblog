@@ -15,7 +15,7 @@ from .config import get_settings, init_settings
 from .database import get_session_local, init_database
 from .middleware import RateLimitMiddleware
 from .models import Post
-from .routers import comments, images, posts, subscribers, tags
+from .routers import comments, images, posts, seo, subscribers, tags
 from .schemas import BlogInfo
 from .security import create_access_token, verify_password
 
@@ -81,6 +81,7 @@ app.include_router(comments.router)
 app.include_router(tags.router)
 app.include_router(images.router)
 app.include_router(subscribers.router)
+app.include_router(seo.router)
 
 
 @app.get("/api")
@@ -119,6 +120,7 @@ async def get_blog_info():
         author_name=settings.AUTHOR_NAME,
         author_bio=settings.AUTHOR_BIO,
         github_sponsor_url=settings.GITHUB_SPONSOR_URL,
+        site_url=settings.SITE_URL,
         total_posts=total_posts,
         total_views=total_views,
         subscription_enabled=subscription_enabled,

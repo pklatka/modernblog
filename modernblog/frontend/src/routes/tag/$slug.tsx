@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import { getPosts } from '../../api/client';
 import PostCard from '../../components/PostCard';
 import Spinner from '../../components/Spinner';
+import SEO from '../../components/SEO';
 import './TagPage.css';
 
 export const Route = createFileRoute('/tag/$slug')({
@@ -28,14 +29,10 @@ function TagPage() {
   });
 
   useEffect(() => {
-    if (slug) {
-      document.title = `${slug} | Blog`;
+    if (!isLoading) {
+      document.getElementById('root')?.classList.add('ready');
     }
-  }, [slug]);
-
-  if (!isLoading) {
-    document.getElementById('root')?.classList.add('ready');
-  }
+  }, [isLoading]);
 
   const posts = data?.posts || [];
   const totalPages = data?.total_pages || 1;
@@ -50,6 +47,13 @@ function TagPage() {
 
   return (
     <div className="tag-page">
+      <SEO
+        title={`${t('tag.postsTagged')} ${slug}`}
+        description={t('tag.description', { tag: slug, count: posts.length })}
+        type="website"
+        url={`/tag/${slug}${page > 1 ? `?page=${page}` : ''}`}
+        canonical={`/tag/${slug}`}
+      />
       <div className="container">
         <motion.header
           className="tag-header"

@@ -8,6 +8,7 @@ import type { PostUpdate } from '../types';
 import { useToast } from './Toast';
 import MarkdownRenderer from './MarkdownRenderer';
 import Spinner from './Spinner';
+import SEO from './SEO';
 import '../routes/admin/EditorPage.css';
 
 interface PostEditorProps {
@@ -128,6 +129,10 @@ export default function PostEditor({ slug }: PostEditorProps) {
 
   return (
     <div className="editor-page">
+      <SEO
+        title={isEditing ? t('admin.posts.edit') : t('admin.posts.new')}
+        noindex={true}
+      />
       <div className="container editor-container">
         <motion.header
           className="editor-header"

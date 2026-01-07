@@ -29,13 +29,13 @@ export default function Header() {
   };
 
   return (
-    <header className="header">
+    <header className="header" role="banner">
       <div className="container header-container">
-        <Link to="/" className="logo">
+        <Link to="/" className="logo" aria-label="Go to homepage">
           <span className="logo-text">{blogInfo?.author_name || t('common.loading')}</span>
         </Link>
 
-        <nav className={`nav ${mobileMenuOpen ? 'nav-open' : ''}`}>
+        <nav className={`nav ${mobileMenuOpen ? 'nav-open' : ''}`} role="navigation" aria-label="Main navigation">
           <Link
             to="/posts"
             search={{ page: 1 }}

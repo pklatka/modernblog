@@ -12,7 +12,7 @@ export default function Footer() {
   const [subscribeOpen, setSubscribeOpen] = useState(false);
 
   return (
-    <footer className="footer">
+    <footer className="footer" role="contentinfo">
       <div className="container footer-container">
         <div className="footer-content">
           <p className="footer-copyright footer-powered-by">
@@ -24,7 +24,7 @@ export default function Footer() {
             </a>
             .
           </p>
-          <div className="footer-links">
+          <nav className="footer-links" aria-label="Footer navigation">
             <Link to="/posts" className="footer-link" search={{ page: 1 }}>
               {t('header.posts')}
             </Link>
@@ -43,7 +43,15 @@ export default function Footer() {
                 {t('header.sponsor')}
               </a>
             )}
-          </div>
+            <a
+              href="/rss.xml"
+              className="footer-link footer-rss"
+              title="RSS Feed"
+              aria-label="Subscribe to RSS Feed"
+            >
+              <span>RSS</span>
+            </a>
+          </nav>
         </div>
       </div>
       <SubscribeModal isOpen={subscribeOpen} onClose={() => setSubscribeOpen(false)} />
