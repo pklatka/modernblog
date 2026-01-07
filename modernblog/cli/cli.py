@@ -241,12 +241,14 @@ def check(config_dir):
     # Check 3: Dependencies
     try:
         import fastapi
+        import gunicorn
         import sqlalchemy
         import uvicorn
 
         deps = (
             f"FastAPI {fastapi.__version__}, "
             f"Uvicorn {uvicorn.__version__}, "
+            f"Gunicorn {gunicorn.__version__}, "
             f"SQLAlchemy {sqlalchemy.__version__}"
         )
         console.print(f"[green]✓[/green] Dependencies installed ({deps})")

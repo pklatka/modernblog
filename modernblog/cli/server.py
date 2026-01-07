@@ -100,14 +100,58 @@ def run_server(
     console.print("[dim]Press Ctrl+C to stop the server[/dim]")
     console.print()
 
-    # Run the server
-    uvicorn.run(
-        "modernblog.backend.app:app",
-        host=host,
-        port=port,
-        reload=reload,
-        workers=workers,
-        ssl_keyfile=ssl_keyfile,
-        ssl_certfile=ssl_certfile,
-        log_level="info",
-    )
+    if reload:
+        # Development mode
+        import uvicorn
+
+        console.print("[dim]Running in development mode...[/dim]")
+        uvicorn.run(
+            "modernblog.backend.app:app",
+            host=host,
+            port=port,
+            reload=reload,
+            ssl_keyfile=ssl_keyfile,
+            ssl_certfile=ssl_certfile,
+            log_level="info",
+        )
+    else:
+        # Production mode
+        from gunicorn.app.base import BaseApplication
+
+        class ModernBlogApplication(BaseApplication):
+            """Custom Gunicorn application for ModernBlog."""
+
+            def __init__(self, app_module: str, options: dict = None):
+                self.options = options or {}
+                self.app_module = app_module
+                super().__init__()
+
+            def load_config(self):
+                for key, value in self.options.items():
+                    if key in self.cfg.settings and value is not None:
+                        self.cfg.set(key.lower(), value)
+
+            def load(self):
+                # Import and return the app
+                from modernblog.backend.app import app
+
+                return app
+
+        gunicorn_options = {
+            "bind": f"{host}:{port}",
+            "workers": workers,
+            "worker_class": "uvicorn.workers.UvicornWorker",
+            "accesslog": "-",
+            "errorlog": "-",
+            "loglevel": "info",
+        }
+
+        if ssl_keyfile and ssl_certfile:
+            gunicorn_options["keyfile"] = ssl_keyfile
+            gunicorn_options["certfile"] = ssl_certfile
+
+        console.print(
+            f"[dim]Running in production mode with gunicorn "
+            f"({workers} worker{'s' if workers > 1 else ''})...[/dim]"
+        )
+        ModernBlogApplication("modernblog.backend.app:app", gunicorn_options).run()
