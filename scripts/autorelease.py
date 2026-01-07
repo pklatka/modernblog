@@ -70,7 +70,7 @@ def bump_version(current_version: str, part: str) -> str:
     return f"{major}.{minor}.{patch}"
 
 
-def update_version_in_file(
+def update_version_in_pyproject(
     pyproject_path: Path, new_version: str, dry_run: bool = False
 ):
     if dry_run:
@@ -85,6 +85,25 @@ def update_version_in_file(
     )
     pyproject_path.write_text(new_content)
     console.print(f"[green]Updated version to {new_version} in pyproject.toml[/green]")
+
+
+def update_version_in_init(init_path: Path, new_version: str, dry_run: bool = False):
+    if dry_run:
+        console.print(
+            f"[bold yellow]DRY RUN:[/bold yellow] Updating fallback version to {new_version} in {init_path}"
+        )
+        return
+
+    if not init_path.exists():
+        console.print(f"[yellow]Warning: {init_path} not found, skipping[/yellow]")
+        return
+
+    content = init_path.read_text()
+    new_content = re.sub(
+        r'__version__ = "\d+\.\d+\.\d+"', f'__version__ = "{new_version}"', content
+    )
+    init_path.write_text(new_content)
+    console.print(f"[green]Updated fallback version to {new_version} in __init__.py[/green]")
 
 
 def validate_version(version: str) -> bool:
@@ -137,11 +156,13 @@ def main():
         console.print("[yellow]Aborted.[/yellow]")
         sys.exit(0)
 
-    # 1. Update version in pyproject.toml
-    update_version_in_file(pyproject_path, new_version, args.dry_run)
+    # 1. Update version in pyproject.toml and __init__.py
+    update_version_in_pyproject(pyproject_path, new_version, args.dry_run)
+    init_path = root_dir / "modernblog" / "__init__.py"
+    update_version_in_init(init_path, new_version, args.dry_run)
 
     # 2. Git commit and tag
-    run_command(["git", "add", "pyproject.toml"], args.dry_run)
+    run_command(["git", "add", "pyproject.toml", "modernblog/__init__.py"], args.dry_run)
     run_command(["git", "commit", "-m", f"Release {new_version}"], args.dry_run)
     run_command(["git", "tag", f"v{new_version}"], args.dry_run)
 

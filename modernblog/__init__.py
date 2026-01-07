@@ -1,6 +1,12 @@
 """ModernBlog - A self-hosted, modern blogging platform."""
 
-__version__ = "1.0.0"
+from importlib.metadata import version, PackageNotFoundError
+
+try:
+    __version__ = version("modernblog")
+except PackageNotFoundError:
+    __version__ = "?.?.?"
+
 __author__ = "Patryk Klatka"
 
 # Re-export CLI for entry point
