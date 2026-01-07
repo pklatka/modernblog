@@ -103,7 +103,9 @@ def update_version_in_init(init_path: Path, new_version: str, dry_run: bool = Fa
         r'__version__ = "\d+\.\d+\.\d+"', f'__version__ = "{new_version}"', content
     )
     init_path.write_text(new_content)
-    console.print(f"[green]Updated fallback version to {new_version} in __init__.py[/green]")
+    console.print(
+        f"[green]Updated fallback version to {new_version} in __init__.py[/green]"
+    )
 
 
 def validate_version(version: str) -> bool:
@@ -161,12 +163,22 @@ def main():
     init_path = root_dir / "modernblog" / "__init__.py"
     update_version_in_init(init_path, new_version, args.dry_run)
 
-    # 2. Git commit and tag
-    run_command(["git", "add", "pyproject.toml", "modernblog/__init__.py"], args.dry_run)
+    # 2. Sync uv.lock with new version
+    if subprocess.run(["which", "uv"], capture_output=True).returncode == 0:
+        console.print("[bold]Syncing uv.lock...[/bold]")
+        run_command(["uv", "sync"], args.dry_run, cwd=root_dir)
+    else:
+        console.print("[yellow]uv not found, skipping uv.lock sync[/yellow]")
+
+    # 3. Git commit and tag
+    run_command(
+        ["git", "add", "pyproject.toml", "modernblog/__init__.py", "uv.lock"],
+        args.dry_run,
+    )
     run_command(["git", "commit", "-m", f"Release {new_version}"], args.dry_run)
     run_command(["git", "tag", f"v{new_version}"], args.dry_run)
 
-    # 3. Build Frontend
+    # 4. Build Frontend
     console.print("[bold]Building frontend...[/bold]")
     frontend_dir = root_dir / "modernblog" / "frontend"
     if frontend_dir.exists():
@@ -189,7 +201,7 @@ def main():
             "[yellow]Frontend directory not found, skipping frontend build.[/yellow]"
         )
 
-    # 4. Build Package
+    # 5. Build Package
     console.print("[bold]Building package...[/bold]")
     # Check if uv is available
     if subprocess.run(["which", "uv"], capture_output=True).returncode == 0:
@@ -197,12 +209,12 @@ def main():
     else:
         run_command([sys.executable, "-m", "build"], args.dry_run)
 
-    # 5. Push
+    # 6. Push
     if args.dry_run or Confirm.ask("Push to origin?"):
         run_command(["git", "push", "origin", "main"], args.dry_run)
         run_command(["git", "push", "origin", f"v{new_version}"], args.dry_run)
 
-    # 6. Create GitHub Release with dist assets
+    # 7. Create GitHub Release with dist assets
     if args.dry_run or Confirm.ask("Create GitHub Release?"):
         # Check if gh is installed
         if subprocess.run(["which", "gh"], capture_output=True).returncode == 0:
