@@ -1,6 +1,6 @@
 [project]
 name = "modernblog"
-version = "1.0.1"
+version = "1.0.2"
 description = "A self-hosted, modern blogging platform with a beautiful UI"
 readme = "README.md"
 license = "MIT"
