@@ -205,7 +205,7 @@ wheels = [
 
 [[package]]
 name = "modernblog"
-version = "1.0.2"
+version = "1.1.0"
 source = { editable = "." }
 dependencies = [
     { name = "click" },
