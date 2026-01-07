@@ -32,7 +32,7 @@ A self-hosted, modern blogging platform with a beautiful UI.
 Install using the standalone installer (downloads the latest release):
 
 ```bash
-curl -LsSf https://modernblog.klatka.it/install | sh
+curl -LsSf https://modernblog.klatka.it/install.sh | sh
 ```
 
 Or install from source for development (requires [uv](https://docs.astral.sh/uv/)):

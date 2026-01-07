@@ -3,7 +3,7 @@ import { CopyCommand } from './CopyCommand';
 import { ChevronDownIcon } from './Icons';
 
 export function Hero() {
-    const installCommand = 'curl -LsSf https://modernblog.klatka.it/install | sh';
+    const installCommand = 'curl -LsSf https://modernblog.klatka.it/install.sh | sh';
 
     const scrollToFeatures = () => {
         document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' });

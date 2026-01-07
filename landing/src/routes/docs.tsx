@@ -36,7 +36,7 @@ ModernBlog is designed for developers and writers who want complete control over
 Install ModernBlog with a single command:
 
 \`\`\`bash
-curl -LsSf https://modernblog.klatka.it/install | sh
+curl -LsSf https://modernblog.klatka.it/install.sh | sh
 \`\`\`
 
 This downloads and installs the latest release to \`~/.local/share/modernblog\`.
