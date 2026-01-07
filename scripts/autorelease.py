@@ -87,6 +87,11 @@ def update_version_in_file(
     console.print(f"[green]Updated version to {new_version} in pyproject.toml[/green]")
 
 
+def validate_version(version: str) -> bool:
+    """Validate that version follows semver format (X.Y.Z)."""
+    return bool(re.match(r"^\d+\.\d+\.\d+$", version))
+
+
 def main():
     parser = argparse.ArgumentParser(description="Autorelease script for ModernBlog")
     parser.add_argument(
@@ -94,7 +99,13 @@ def main():
         choices=["major", "minor", "patch"],
         nargs="?",
         default="patch",
-        help="Version part to bump",
+        help="Version part to bump (ignored if --version is specified)",
+    )
+    parser.add_argument(
+        "--version",
+        "-v",
+        type=str,
+        help="Set exact version (e.g., 2.0.0) instead of bumping",
     )
     parser.add_argument(
         "--dry-run", action="store_true", help="Print commands without executing them"
@@ -105,7 +116,17 @@ def main():
     pyproject_path = root_dir / "pyproject.toml"
 
     current_version = get_current_version(pyproject_path)
-    new_version = bump_version(current_version, args.part)
+
+    if args.version:
+        if not validate_version(args.version):
+            console.print(
+                f"[bold red]Invalid version format:[/bold red] {args.version}"
+            )
+            console.print("Version must be in format X.Y.Z (e.g., 1.2.3)")
+            sys.exit(1)
+        new_version = args.version
+    else:
+        new_version = bump_version(current_version, args.part)
 
     console.print(f"[bold]Current version:[/bold] {current_version}")
     console.print(f"[bold]New version:[/bold]     {new_version}")
