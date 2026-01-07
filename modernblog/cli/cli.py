@@ -155,10 +155,8 @@ def uninstall(config_dir, yes):
             "\n[bold green]ModernBlog has been completely uninstalled.[/bold green]"
         )
         console.print("\nTo also remove the CLI tool itself, run:")
-        console.print(
-            "  [bold]pip uninstall modernblog[/bold]  or  "
-            "[bold]uv pip uninstall modernblog[/bold]"
-        )
+        console.print("  [bold]rm ~/.local/bin/modernblog[/bold]")
+        console.print("  [bold]rm -rf ~/.local/share/modernblog[/bold]")
 
     except PermissionError:
         console.print(
