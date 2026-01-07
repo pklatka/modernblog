@@ -112,7 +112,8 @@ if [ "$USE_SOURCE" = "true" ]; then
 else
     # Download and install wheel (lightweight)
     log_info "Downloading wheel package..."
-    WHEEL_FILE="$TMP_DIR/modernblog.whl"
+    WHEEL_NAME=$(basename "$WHEEL_URL")
+    WHEEL_FILE="$TMP_DIR/$WHEEL_NAME"
     
     if command -v curl >/dev/null 2>&1; then
         curl -fsSL "$WHEEL_URL" -o "$WHEEL_FILE" || log_error "Failed to download wheel."
