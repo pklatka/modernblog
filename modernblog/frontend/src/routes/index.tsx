@@ -57,11 +57,7 @@ function HomePage() {
 
   return (
     <div className="home-page">
-      <SEO
-        description={blogInfo?.description}
-        type="website"
-        url="/"
-      />
+      <SEO description={blogInfo?.description} type="website" url="/" />
 
       {/* Hero Section */}
       <section className="hero">

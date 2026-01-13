@@ -333,4 +333,3 @@ export default function SEO({
   // This component doesn't render anything visible
   return null;
 }
-

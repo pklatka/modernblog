@@ -42,7 +42,7 @@ def format_datetime_rfc822(dt: Optional[datetime]) -> str:
 async def sitemap(request: Request, db: Session = Depends(get_db)):
     """
     Generate XML sitemap for search engine indexing.
-    
+
     Includes:
     - Homepage
     - All published posts
@@ -81,14 +81,14 @@ async def sitemap(request: Request, db: Session = Depends(get_db)):
     for post in posts:
         url_elem = SubElement(urlset, "url")
         SubElement(url_elem, "loc").text = f"{site_url}/post/{post.slug}"
-        
+
         # Use the most recent date (updated or published)
         last_mod = post.updated_at or post.published_at
         if last_mod:
             SubElement(url_elem, "lastmod").text = format_datetime_iso(last_mod)
-        
+
         SubElement(url_elem, "changefreq").text = "weekly"
-        
+
         # Featured posts get higher priority
         priority = "0.8" if post.is_featured else "0.7"
         SubElement(url_elem, "priority").text = priority
@@ -121,7 +121,7 @@ async def sitemap(request: Request, db: Session = Depends(get_db)):
     # Generate XML string
     xml_string = tostring(urlset, encoding="unicode")
     xml_declaration = '<?xml version="1.0" encoding="UTF-8"?>\n'
-    
+
     return Response(
         content=xml_declaration + xml_string,
         media_type="application/xml",
@@ -135,7 +135,7 @@ async def sitemap(request: Request, db: Session = Depends(get_db)):
 async def robots_txt(request: Request):
     """
     Generate robots.txt for search engine crawlers.
-    
+
     Allows all crawlers access to public content,
     blocks admin and API routes.
     """
@@ -179,7 +179,7 @@ Sitemap: {site_url}/sitemap.xml
 async def rss_feed(request: Request, db: Session = Depends(get_db)):
     """
     Generate RSS 2.0 feed for blog posts.
-    
+
     Includes the 20 most recent published posts.
     """
     settings = get_settings()
@@ -224,26 +224,28 @@ async def rss_feed(request: Request, db: Session = Depends(get_db)):
 
     for post in posts:
         item = SubElement(channel, "item")
-        
+
         SubElement(item, "title").text = post.title
         SubElement(item, "link").text = f"{site_url}/post/{post.slug}"
         SubElement(item, "guid").text = f"{site_url}/post/{post.slug}"
-        
+
         # Description (excerpt or truncated content)
-        description = post.excerpt or (post.content[:300] + "..." if len(post.content) > 300 else post.content)
+        description = post.excerpt or (
+            post.content[:300] + "..." if len(post.content) > 300 else post.content
+        )
         SubElement(item, "description").text = description
-        
+
         # Full content (encoded)
         content_encoded = SubElement(item, "content:encoded")
         content_encoded.text = f"<![CDATA[{post.content}]]>"
-        
+
         # Publication date
         pub_date = post.published_at or post.created_at
         SubElement(item, "pubDate").text = format_datetime_rfc822(pub_date)
-        
+
         # Author
         SubElement(item, "dc:creator").text = settings.AUTHOR_NAME
-        
+
         # Categories (tags)
         for tag in post.tags:
             category = SubElement(item, "category")
@@ -262,7 +264,7 @@ async def rss_feed(request: Request, db: Session = Depends(get_db)):
     # Generate XML string
     xml_string = tostring(rss, encoding="unicode")
     xml_declaration = '<?xml version="1.0" encoding="UTF-8"?>\n'
-    
+
     return Response(
         content=xml_declaration + xml_string,
         media_type="application/rss+xml",
@@ -276,7 +278,7 @@ async def rss_feed(request: Request, db: Session = Depends(get_db)):
 async def get_seo_metadata(request: Request, db: Session = Depends(get_db)):
     """
     Get SEO metadata for the blog.
-    
+
     Returns site URL, social links, and other SEO-related configuration.
     """
     settings = get_settings()
@@ -301,4 +303,3 @@ async def get_seo_metadata(request: Request, db: Session = Depends(get_db)):
             "sitemap": f"{site_url}/sitemap.xml",
         },
     }
-

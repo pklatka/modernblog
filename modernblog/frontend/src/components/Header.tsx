@@ -35,7 +35,11 @@ export default function Header() {
           <span className="logo-text">{blogInfo?.author_name || t('common.loading')}</span>
         </Link>
 
-        <nav className={`nav ${mobileMenuOpen ? 'nav-open' : ''}`} role="navigation" aria-label="Main navigation">
+        <nav
+          className={`nav ${mobileMenuOpen ? 'nav-open' : ''}`}
+          role="navigation"
+          aria-label="Main navigation"
+        >
           <Link
             to="/posts"
             search={{ page: 1 }}

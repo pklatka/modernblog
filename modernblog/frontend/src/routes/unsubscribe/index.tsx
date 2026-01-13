@@ -58,10 +58,7 @@ function UnsubscribePage() {
 
   return (
     <div className="unsubscribe-page">
-      <SEO
-        title={t('unsubscribe.title')}
-        noindex={true}
-      />
+      <SEO title={t('unsubscribe.title')} noindex={true} />
       <div className="container">
         <motion.div
           className="unsubscribe-card"

@@ -44,8 +44,9 @@ function PostPage() {
 
   // Calculate word count for structured data
   const wordCount = useMemo(() => {
-    if (!post?.content) return 0;
-    return post.content.split(/\s+/).length;
+    const content = post?.content;
+    if (!content) return 0;
+    return content.split(/\s+/).length;
   }, [post?.content]);
 
   if (isLoading) {

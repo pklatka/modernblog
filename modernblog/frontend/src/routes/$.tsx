@@ -15,10 +15,7 @@ function NotFoundPage() {
 
   return (
     <div className="not-found-page">
-      <SEO
-        title="Page Not Found"
-        noindex={true}
-      />
+      <SEO title="Page Not Found" noindex={true} />
       <div className="container">
         <motion.div
           className="not-found-content"

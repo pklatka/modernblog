@@ -129,10 +129,7 @@ export default function PostEditor({ slug }: PostEditorProps) {
 
   return (
     <div className="editor-page">
-      <SEO
-        title={isEditing ? t('admin.posts.edit') : t('admin.posts.new')}
-        noindex={true}
-      />
+      <SEO title={isEditing ? t('admin.posts.edit') : t('admin.posts.new')} noindex={true} />
       <div className="container editor-container">
         <motion.header
           className="editor-header"

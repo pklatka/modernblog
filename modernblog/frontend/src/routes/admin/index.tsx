@@ -242,10 +242,7 @@ function AdminPage() {
 
   return (
     <div className="admin-page">
-      <SEO
-        title={t('admin.dashboardTitle')}
-        noindex={true}
-      />
+      <SEO title={t('admin.dashboardTitle')} noindex={true} />
       <div className="container admin-container">
         <motion.header
           className="admin-header"
